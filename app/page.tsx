@@ -3,22 +3,42 @@
 import Image from 'next/image';
 
 export default function Home() {
-  const models = [
+  const apiModels = [
     { 
       name: 'Kimichat K2.5', 
       price: '$0.15', 
       unit: '/1M tokens', 
       desc: 'Latest model from Moonshot AI. Excellent Chinese language understanding and generation.',
       context: '128K tokens',
-      features: ['Fast response', 'Chinese optimized', 'Code support']
+      features: ['Fast response', 'Chinese optimized', 'Code support'],
+      popular: false
     },
     { 
-      name: 'Qwen Max', 
-      price: '$0.20', 
+      name: 'ERNIE 4.0 (文心一言)', 
+      price: '$0.18', 
       unit: '/1M tokens', 
-      desc: 'Alibaba latest flagship model. Strong reasoning and multimodal capabilities.',
+      desc: 'Baidu\'s flagship model. Best-in-class for Chinese language and multimodal capabilities.',
+      context: '128K tokens',
+      features: ['Multimodal', 'Chinese optimization', 'Reasoning'],
+      popular: true
+    },
+    { 
+      name: 'iFlytek Spark (讯飞星火)', 
+      price: '$0.15', 
+      unit: '/1M tokens', 
+      desc: 'iFlytek\'s advanced model. Excellent for voice, education, and Chinese language tasks.',
+      context: '64K tokens',
+      features: ['Voice support', 'Education focus', 'Real-time'],
+      popular: true
+    },
+    { 
+      name: 'Doubao (豆包)', 
+      price: '$0.08', 
+      unit: '/1M tokens', 
+      desc: 'ByteDance\'s cost-effective model. Fast and affordable for basic tasks.',
       context: '32K tokens',
-      features: ['Multimodal', 'Long context', 'Code generation']
+      features: ['Affordable', 'Fast', 'High concurrency'],
+      popular: false
     },
     { 
       name: 'GLM-4', 
@@ -26,7 +46,8 @@ export default function Home() {
       unit: '/1M tokens', 
       desc: 'Zhipu AI powerful model. Cost-effective with excellent performance.',
       context: '128K tokens',
-      features: ['Affordable', 'Chinese focus', 'Vision support']
+      features: ['Affordable', 'Chinese focus', 'Vision support'],
+      popular: false
     },
     { 
       name: 'MiniMax', 
@@ -34,19 +55,12 @@ export default function Home() {
       unit: '/1M tokens', 
       desc: 'Strong reasoning and text generation. Great for complex tasks.',
       context: '32K tokens',
-      features: ['Reasoning', 'Long output', 'Stable']
+      features: ['Reasoning', 'Long output', 'Stable'],
+      popular: false
     },
   ];
 
   const gpuServers = [
-    {
-      name: 'NVIDIA A100',
-      price: '$2.50',
-      unit: '/hour',
-      vram: '80GB HBM2',
-      desc: 'Industry standard for AI training and large language models',
-      features: ['FP64: 9.7 TFLOPS', 'FP16: 312 TFLOPS', 'Best for: LLM training']
-    },
     {
       name: 'NVIDIA H100',
       price: '$3.50',
@@ -56,12 +70,20 @@ export default function Home() {
       features: ['FP64: 51 TFLOPS', 'FP16: 1,980 TFLOPS', 'Best for: Large-scale training']
     },
     {
+      name: 'NVIDIA A100',
+      price: '$2.50',
+      unit: '/hour',
+      vram: '80GB HBM2',
+      desc: 'Industry standard for AI training and large language models',
+      features: ['FP64: 9.7 TFLOPS', 'FP16: 312 TFLOPS', 'Best for: LLM training']
+    },
+    {
       name: 'NVIDIA A6000',
       price: '$1.80',
       unit: '/hour',
       vram: '48GB GDDR6X',
       desc: 'Professional visualization and AI inference',
-      features: ['FP64: 38.7 TFLOPS', 'FP16: 309 TFLOPS', 'Best for: Inference & prototyping']
+      features: ['FP64: 38.7 TFLOPS', 'FP16: 309 TFLOPS', 'Best for: Inference']
     },
     {
       name: 'NVIDIA A4000',
@@ -70,6 +92,27 @@ export default function Home() {
       vram: '16GB GDDR6X',
       desc: 'Cost-effective option for development and testing',
       features: ['FP64: 17.4 TFLOPS', 'FP16: 152 TFLOPS', 'Best for: Development']
+    },
+  ];
+
+  const services = [
+    {
+      icon: '🤖',
+      title: 'AI Agent Development',
+      desc: 'Custom AI agents for your business. We build intelligent assistants tailored to your needs.',
+      features: ['Customer support bots', 'Internal assistants', 'Automation']
+    },
+    {
+      icon: '⚙️',
+      title: 'API Integration',
+      desc: 'We help businesses integrate Chinese AI APIs into their products and workflows.',
+      features: ['Technical consultation', 'Custom integration', '24/7 support']
+    },
+    {
+      icon: '📋',
+      title: 'Compliance & Localization',
+      desc: 'Navigate Chinese AI regulations and adapt products for global markets.',
+      features: ['Data compliance', 'Content moderation', 'Market adaptation']
     },
   ];
 
@@ -100,18 +143,12 @@ export default function Home() {
     '🎮 Game Development',
   ];
 
-  const comparison = [
-    { provider: 'OpenRub', price: '$0.15', official: '$0.15', savings: 'Same price' },
-    { provider: 'OpenRub', price: '$0.10', official: '$0.35', savings: '71% cheaper' },
-    { provider: 'OpenRub', price: '$0.12', official: '$0.20', savings: '40% cheaper' },
-  ];
-
   const faqs = [
     { q: 'How do I get started?', a: 'Sign up for an account, get your API key, and start making requests. We offer $10 free credits for new users!' },
     { q: 'What payment methods do you accept?', a: 'We accept PayPal, credit cards, and bank transfers through Payoneer.' },
     { q: 'Is there a free trial?', a: 'Yes! New users get $10 free credits to test our APIs.' },
     { q: 'How does billing work?', a: 'We bill based on actual usage. You only pay for the tokens you consume.' },
-    { q: 'Can I upgrade or downgrade anytime?', a: 'Yes! You can change your plan at any time with no penalties.' },
+    { q: 'Can I use these APIs for commercial products?', a: 'Yes! All our APIs can be used for commercial purposes.' },
   ];
 
   return (
@@ -123,21 +160,33 @@ export default function Home() {
             OpenRub
           </h1>
           <p className="text-xl md:text-2xl opacity-90 mb-4">
-            Premium AI API Gateway & GPU Compute
+            Your Gateway to China&apos;s Premier AI APIs & GPU Compute
           </p>
           <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
-            Access Kimichat, Qwen, GLM, and MiniMax APIs at competitive prices. 
-            Rent high-performance GPU servers for AI training and inference.
+            Access ERNIE, iFlytek Spark, Doubao, Kimichat, and more. 
+            The most comprehensive gateway for Chinese AI technologies.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <a href="#api-pricing" className="px-8 py-4 bg-white text-purple-900 rounded-full font-semibold hover:bg-gray-100 transition">
-              API Pricing
+              View API Pricing
             </a>
-            <a href="#gpu-pricing" className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition">
-              GPU Servers
+            <a href="#services" className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition">
+              Our Services
             </a>
           </div>
-          <p className="mt-4 text-sm opacity-70">No credit card required for free trial</p>
+          <p className="mt-4 text-sm opacity-70">No credit card required for free trial • $10 free credits for new users</p>
+        </div>
+      </section>
+
+      {/* Mission Statement */}
+      <section className="py-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <p className="text-xl md:text-2xl font-light">
+            &quot;路虽远，行则将至。事虽难，做则必成。&quot;
+          </p>
+          <p className="mt-2 opacity-80">
+            — Even a journey of a thousand miles begins with a single step
+          </p>
         </div>
       </section>
 
@@ -176,12 +225,18 @@ export default function Home() {
       {/* API Pricing */}
       <section id="api-pricing" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4">AI API Pricing</h2>
-          <p className="text-gray-600 text-center mb-12">Pay only for what you use. No hidden fees.</p>
+          <h2 className="text-4xl font-bold text-center mb-4">🌏 China AI API Pricing</h2>
+          <p className="text-gray-600 text-center mb-4">Access the best Chinese AI models through a single API</p>
+          <p className="text-center mb-12 text-purple-600 font-semibold">Pay only for what you use. No hidden fees.</p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {models.map((model, i) => (
-              <div key={i} className="bg-white border-2 border-purple-100 rounded-2xl p-6 hover:border-purple-500 transition text-center">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {apiModels.map((model, i) => (
+              <div key={i} className={`bg-white border-2 ${model.popular ? 'border-purple-500 shadow-lg' : 'border-purple-100'} rounded-2xl p-6 hover:border-purple-500 transition text-center relative`}>
+                {model.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-xs px-3 py-1 rounded-full">
+                    Most Popular
+                  </span>
+                )}
                 <h3 className="font-bold text-xl mb-2">{model.name}</h3>
                 <p className="text-4xl font-bold text-purple-600 mb-1">{model.price}</p>
                 <p className="text-gray-500 text-sm mb-4">{model.unit}</p>
@@ -200,8 +255,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* GPU Pricing - NEW */}
-      <section id="gpu-pricing" className="py-20 bg-white">
+      {/* Services */}
+      <section id="services" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">🤝 Professional Services</h2>
+          <p className="text-gray-600 text-center mb-12">Beyond APIs - we help you succeed with Chinese AI</p>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {services.map((service, i) => (
+              <div key={i} className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border border-purple-100">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="font-bold text-xl mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.desc}</p>
+                <div className="space-y-2">
+                  {service.features?.map((f, j) => (
+                    <p key={j} className="text-sm text-gray-500">• {f}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GPU Pricing */}
+      <section id="gpu-pricing" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4">🚀 GPU Compute Rental</h2>
           <p className="text-gray-600 text-center mb-4">High-performance GPU servers for AI training and inference</p>
@@ -225,11 +303,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">Need custom configuration? Contact us for enterprise solutions.</p>
-            <a href="#contact" className="text-purple-600 font-semibold hover:underline">Contact Sales →</a>
-          </div>
         </div>
       </section>
 
@@ -248,14 +321,14 @@ export default function Home() {
       </section>
 
       {/* Coming Soon */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Coming Soon</h2>
-          <p className="text-gray-600 mb-8">More models on the way</p>
+          <p className="text-gray-600 mb-8">More models and services on the way</p>
           
           <div className="grid md:grid-cols-3 gap-6">
             {['Claude (Anthropic)', 'GPT-4o (OpenAI)', 'Gemini (Google)'].map((m, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl shadow-md">
+              <div key={i} className="bg-gray-50 p-6 rounded-xl shadow-md">
                 <h3 className="font-bold text-lg">{m}</h3>
                 <p className="text-gray-500 text-sm mt-2">Coming Q2 2026</p>
               </div>
@@ -265,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* How it Works */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">How It Works</h2>
           
@@ -309,7 +382,7 @@ export default function Home() {
       {/* CTA */}
       <section id="contact" className="py-20 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Get Started Today</h2>
+          <h2 className="text-4xl font-bold mb-6">Start Your AI Journey Today</h2>
           <p className="text-xl opacity-90 mb-4">
             Sign up now and get <span className="font-bold text-yellow-300">$10 free credits</span>!
           </p>
