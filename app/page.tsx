@@ -38,6 +38,41 @@ export default function Home() {
     },
   ];
 
+  const gpuServers = [
+    {
+      name: 'NVIDIA A100',
+      price: '$2.50',
+      unit: '/hour',
+      vram: '80GB HBM2',
+      desc: 'Industry standard for AI training and large language models',
+      features: ['FP64: 9.7 TFLOPS', 'FP16: 312 TFLOPS', 'Best for: LLM training']
+    },
+    {
+      name: 'NVIDIA H100',
+      price: '$3.50',
+      unit: '/hour',
+      vram: '80GB HBM3',
+      desc: 'Next-gen AI accelerator with 3x performance boost',
+      features: ['FP64: 51 TFLOPS', 'FP16: 1,980 TFLOPS', 'Best for: Large-scale training']
+    },
+    {
+      name: 'NVIDIA A6000',
+      price: '$1.80',
+      unit: '/hour',
+      vram: '48GB GDDR6X',
+      desc: 'Professional visualization and AI inference',
+      features: ['FP64: 38.7 TFLOPS', 'FP16: 309 TFLOPS', 'Best for: Inference & prototyping']
+    },
+    {
+      name: 'NVIDIA A4000',
+      price: '$0.90',
+      unit: '/hour',
+      vram: '16GB GDDR6X',
+      desc: 'Cost-effective option for development and testing',
+      features: ['FP64: 17.4 TFLOPS', 'FP16: 152 TFLOPS', 'Best for: Development']
+    },
+  ];
+
   const features = [
     { icon: '🔒', title: 'Enterprise-grade Security', desc: 'Your data is encrypted and protected with industry-standard security practices.' },
     { icon: '⚡', title: '99.9% Uptime SLA', desc: 'Guaranteed reliability with redundant infrastructure.' },
@@ -54,6 +89,21 @@ export default function Home() {
     '📧 Email Automation',
     '📱 App Integration',
     '🎓 Educational Tools',
+  ];
+
+  const gpuUseCases = [
+    '🧠 LLM Training',
+    '🎨 AI Image Generation',
+    '🎬 Video Rendering',
+    '🔬 Scientific Computing',
+    '📊 Data Analytics',
+    '🎮 Game Development',
+  ];
+
+  const comparison = [
+    { provider: 'OpenRub', price: '$0.15', official: '$0.15', savings: 'Same price' },
+    { provider: 'OpenRub', price: '$0.10', official: '$0.35', savings: '71% cheaper' },
+    { provider: 'OpenRub', price: '$0.12', official: '$0.20', savings: '40% cheaper' },
   ];
 
   const faqs = [
@@ -73,18 +123,18 @@ export default function Home() {
             OpenRub
           </h1>
           <p className="text-xl md:text-2xl opacity-90 mb-4">
-            Premium AI API Gateway for Developers
+            Premium AI API Gateway & GPU Compute
           </p>
           <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
             Access Kimichat, Qwen, GLM, and MiniMax APIs at competitive prices. 
-            Fast, reliable, and secure.
+            Rent high-performance GPU servers for AI training and inference.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href="#pricing" className="px-8 py-4 bg-white text-purple-900 rounded-full font-semibold hover:bg-gray-100 transition">
-              View Pricing
+            <a href="#api-pricing" className="px-8 py-4 bg-white text-purple-900 rounded-full font-semibold hover:bg-gray-100 transition">
+              API Pricing
             </a>
-            <a href="#contact" className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition">
-              Get $10 Free Credits
+            <a href="#gpu-pricing" className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white/10 transition">
+              GPU Servers
             </a>
           </div>
           <p className="mt-4 text-sm opacity-70">No credit card required for free trial</p>
@@ -123,10 +173,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section id="pricing" className="py-20 bg-gray-50">
+      {/* API Pricing */}
+      <section id="api-pricing" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4">Transparent Pricing</h2>
+          <h2 className="text-4xl font-bold text-center mb-4">AI API Pricing</h2>
           <p className="text-gray-600 text-center mb-12">Pay only for what you use. No hidden fees.</p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -147,25 +197,67 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* GPU Pricing - NEW */}
+      <section id="gpu-pricing" className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">🚀 GPU Compute Rental</h2>
+          <p className="text-gray-600 text-center mb-4">High-performance GPU servers for AI training and inference</p>
+          <p className="text-center mb-12 text-sm text-gray-500">Flexible hourly billing. No long-term commitment.</p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {gpuServers.map((gpu, i) => (
+              <div key={i} className="bg-gradient-to-br from-gray-900 to-gray-800 text-white border-2 border-gray-700 rounded-2xl p-6 hover:border-purple-500 transition text-center">
+                <h3 className="font-bold text-xl mb-2">{gpu.name}</h3>
+                <p className="text-4xl font-bold text-purple-400 mb-1">{gpu.price}</p>
+                <p className="text-gray-400 text-sm mb-4">{gpu.unit}</p>
+                <p className="text-gray-300 mb-4 text-sm">{gpu.desc}</p>
+                <div className="text-xs text-gray-400 mb-4">
+                  <p className="font-semibold text-purple-300">{gpu.vram}</p>
+                </div>
+                <div className="text-left text-sm space-y-1">
+                  {gpu.features?.map((f, j) => (
+                    <p key={j} className="text-gray-400">• {f}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
 
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">Need a custom plan? Contact us for enterprise pricing.</p>
+            <p className="text-gray-600 mb-4">Need custom configuration? Contact us for enterprise solutions.</p>
             <a href="#contact" className="text-purple-600 font-semibold hover:underline">Contact Sales →</a>
           </div>
         </div>
       </section>
 
+      {/* GPU Use Cases */}
+      <section className="py-16 bg-gray-900 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">GPU Compute Use Cases</h2>
+          <div className="flex flex-wrap gap-4 justify-center">
+            {gpuUseCases.map((useCase, i) => (
+              <span key={i} className="px-6 py-3 bg-gray-800 text-gray-300 rounded-full text-lg">
+                {useCase}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Coming Soon */}
-      <section className="py-20 bg-gray-900 text-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Coming Soon</h2>
-          <p className="text-gray-400 mb-8">More models on the way</p>
+          <p className="text-gray-600 mb-8">More models on the way</p>
           
           <div className="grid md:grid-cols-3 gap-6">
             {['Claude (Anthropic)', 'GPT-4o (OpenAI)', 'Gemini (Google)'].map((m, i) => (
-              <div key={i} className="bg-gray-800 p-6 rounded-xl">
+              <div key={i} className="bg-white p-6 rounded-xl shadow-md">
                 <h3 className="font-bold text-lg">{m}</h3>
-                <p className="text-gray-400 text-sm mt-2">Coming Q2 2026</p>
+                <p className="text-gray-500 text-sm mt-2">Coming Q2 2026</p>
               </div>
             ))}
           </div>
