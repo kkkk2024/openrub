@@ -3,10 +3,10 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-// Store API keys (in production, use environment variables)
+// Store API keys
 const API_KEYS = {
-  'tongyi': process.env.TONGYI_API_KEY || '',
-  'openrouter': process.env.OPENROUTER_API_KEY || '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',
+  'tongyi': '',
+  'openrouter': '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',
 };
 
 // Provider endpoints
