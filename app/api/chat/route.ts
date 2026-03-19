@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Store API keys
 const API_KEYS = {
   'tongyi': '',
-  'openrouter': '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',
+  'openrouter': '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',
 };
 
 // Provider endpoints
