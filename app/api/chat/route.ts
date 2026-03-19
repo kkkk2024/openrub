@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // Store API keys (in production, use environment variables)
 const API_KEYS = {
-  'tongyi': process.env.TONGYI_API_KEY || 'sk-7c6bc997ee124e56becdcac79453f0b3',
+  'tongyi': process.env.TONGYI_API_KEY || '',
   'openrouter': process.env.OPENROUTER_API_KEY || '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',
 };
 
