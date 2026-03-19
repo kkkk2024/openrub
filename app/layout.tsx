@@ -52,8 +52,8 @@ export default function RootLayout({
         <meta name="geo.placename" content="London" />
         <meta name="geo.position" content="51.5074;-0.1278" />
         <meta name="ICBM" content="51.5074, -0.1278" />
-        <link rel="alternate" hreflang="en" href="https://openrub.com" />
-        <link rel="alternate" hreflang="x-default" href="https://openrub.com" />
+        <link rel="alternate" hrefLang="en" href="https://openrub.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://openrub.com" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
