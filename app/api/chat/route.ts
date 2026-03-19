@@ -1,5 +1,5 @@
-// OpenRub API Route Handler
-// Handles chat completion requests and routes to different AI providers
+// OpenRub API Route Handler v2
+// Updated with working OpenRouter key
 
 import { NextRequest, NextResponse } from 'next/server';
 
