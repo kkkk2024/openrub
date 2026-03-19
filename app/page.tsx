@@ -14,8 +14,8 @@ export default function Home() {
       popular: false
     },
     { 
-      name: 'ERNIE 4.0 (文心一言)', 
-      price: '$0.18', 
+      name: 'ERNIE 4.0', 
+      price: 'From $0.18', 
       unit: '/1M tokens', 
       desc: 'Baidu\'s flagship model. Best-in-class for Chinese language and multimodal capabilities.',
       context: '128K tokens',
@@ -23,8 +23,8 @@ export default function Home() {
       popular: true
     },
     { 
-      name: 'iFlytek Spark (讯飞星火)', 
-      price: '$0.15', 
+      name: 'iFlytek Spark', 
+      price: 'From $0.15', 
       unit: '/1M tokens', 
       desc: 'iFlytek\'s advanced model. Excellent for voice, education, and Chinese language tasks.',
       context: '64K tokens',
@@ -32,8 +32,8 @@ export default function Home() {
       popular: true
     },
     { 
-      name: 'Doubao (豆包)', 
-      price: '$0.08', 
+      name: 'Doubao', 
+      price: 'From $0.08', 
       unit: '/1M tokens', 
       desc: 'ByteDance\'s cost-effective model. Fast and affordable for basic tasks.',
       context: '32K tokens',
@@ -42,7 +42,7 @@ export default function Home() {
     },
     { 
       name: 'GLM-4', 
-      price: '$0.10', 
+      price: 'From $0.10', 
       unit: '/1M tokens', 
       desc: 'Zhipu AI powerful model. Cost-effective with excellent performance.',
       context: '128K tokens',
@@ -51,7 +51,7 @@ export default function Home() {
     },
     { 
       name: 'MiniMax', 
-      price: '$0.12', 
+      price: 'From $0.12', 
       unit: '/1M tokens', 
       desc: 'Strong reasoning and text generation. Great for complex tasks.',
       context: '32K tokens',
@@ -145,7 +145,7 @@ export default function Home() {
 
   const faqs = [
     { q: 'How do I get started?', a: 'Sign up for an account, get your API key, and start making requests. We offer $10 free credits for new users!' },
-    { q: 'What payment methods do you accept?', a: 'We accept PayPal, credit cards, and bank transfers through Payoneer.' },
+    { q: 'What payment methods do you accept?', a: 'We accept PayPal, credit cards, bank transfers (via Payoneer), and USDT cryptocurrency.' },
     { q: 'Is there a free trial?', a: 'Yes! New users get $10 free credits to test our APIs.' },
     { q: 'How does billing work?', a: 'We bill based on actual usage. You only pay for the tokens you consume.' },
     { q: 'Can I use these APIs for commercial products?', a: 'Yes! All our APIs can be used for commercial purposes.' },
@@ -164,7 +164,7 @@ export default function Home() {
           </p>
           <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
             Access ERNIE, iFlytek Spark, Doubao, Kimichat, and more. 
-            The most comprehensive gateway for Chinese AI technologies.
+            The most comprehensive gateway for Chinese AI technologies to the global market.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <a href="#api-pricing" className="px-8 py-4 bg-white text-purple-900 rounded-full font-semibold hover:bg-gray-100 transition">
@@ -178,15 +178,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission Statement */}
-      <section className="py-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <p className="text-xl md:text-2xl font-light">
-            &quot;路虽远，行则将至。事虽难，做则必成。&quot;
-          </p>
-          <p className="mt-2 opacity-80">
-            — Even a journey of a thousand miles begins with a single step
-          </p>
+      {/* Trust Badges */}
+      <section className="py-8 bg-white border-b">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <p className="text-sm text-gray-500 mb-4">TRUSTED BY DEVELOPERS WORLDWIDE</p>
+          <div className="flex flex-wrap justify-center gap-8 opacity-50">
+            <span className="text-xl font-bold">🚀</span>
+            <span className="text-xl font-bold">💻</span>
+            <span className="text-xl font-bold">🤖</span>
+            <span className="text-xl font-bold">📱</span>
+            <span className="text-xl font-bold">☁️</span>
+          </div>
         </div>
       </section>
 
@@ -226,8 +228,8 @@ export default function Home() {
       <section id="api-pricing" className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-4">🌏 China AI API Pricing</h2>
-          <p className="text-gray-600 text-center mb-4">Access the best Chinese AI models through a single API</p>
-          <p className="text-center mb-12 text-purple-600 font-semibold">Pay only for what you use. No hidden fees.</p>
+          <p className="text-gray-600 text-center mb-4">Access the best Chinese AI models through a single unified API</p>
+          <p className="text-center mb-12 text-purple-600 font-semibold">Pay only for what you use. No hidden fees. No monthly minimums.</p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {apiModels.map((model, i) => (
@@ -251,6 +253,46 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Payment Methods */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-8">💳 Accepted Payment Methods</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <div className="text-4xl mb-4">💳</div>
+              <h3 className="font-bold mb-2">Credit Card</h3>
+              <p className="text-gray-600 text-sm">Visa, Mastercard, AMEX via Stripe</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <div className="text-4xl mb-4">🅿️</div>
+              <h3 className="font-bold mb-2">PayPal / Payoneer</h3>
+              <p className="text-gray-600 text-sm">Bank transfers for businesses</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <div className="text-4l-xl mb-4">₿</div>
+              <h3 className="font-bold mb-2">USDT Crypto</h3>
+              <p className="text-gray-600 text-sm">Fast and secure blockchain payments</p>
+            </div>
+          </div>
+          
+          {/* USDT Addresses */}
+          <div className="mt-8 bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
+            <h3 className="font-bold text-lg mb-4">📤 USDT Payment Addresses</h3>
+            <div className="text-left space-y-4 max-w-xl mx-auto">
+              <div>
+                <p className="text-sm font-semibold text-gray-600 mb-1">BNB Chain (BEP-20):</p>
+                <code className="block bg-white p-3 rounded text-sm break-all border">0x076BB644e9530C8639E46f44D45e7C3841CB11ed</code>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-600 mb-1">TRC-20 (TRON):</p>
+                <code className="block bg-white p-3 rounded text-sm break-all border">TAeSmMx4MeT15GwhtFLad2gZwkSPLThFvn</code>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">Please send payment screenshot to: support@openrub.com</p>
+            </div>
           </div>
         </div>
       </section>
@@ -402,6 +444,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-8 bg-gray-900 text-gray-400 text-center">
         <p>© 2026 OpenRub. All rights reserved.</p>
+        <p className="text-sm mt-2">Registered in United Kingdom | support@openrub.com</p>
       </footer>
     </main>
   );
